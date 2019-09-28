@@ -133,6 +133,9 @@ def _import(destination, source, file, album_from_folder, trash, allow_duplicate
         result.append((current_file, dest_path))
         has_errors = has_errors is True or not dest_path
 
+    with open('output.txt', 'a') as output_file:
+        output_file.write('*********************************\n\n')
+
     result.write()
 
     if has_errors:

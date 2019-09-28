@@ -103,7 +103,13 @@ class FileSystem(object):
             for filename in filenames:
                 # If file extension is in `extensions` then append to the list
                 if os.path.splitext(filename)[1][1:].lower() in extensions:
+                    with open('output.txt', 'a') as output_file:
+                        output_file.write('adding ' + os.path.join(dirname,filename) + ' as it is not in ' + ', '.join(str(s) for s in excludeDir) + '\n')
                     yield os.path.join(dirname, filename)
+                else:
+                    with open('output.txt', 'a') as output_file:
+                        output_file.write('Skipping ' + os.path.join(dirname,filename) + '\n')
+  
 
     def get_current_directory(self):
         """Get the current working directory.
